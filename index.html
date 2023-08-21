@@ -1,0 +1,146 @@
+<!-- 
+  Copyright © [2023] [Dustin_Chen]. All rights reserved.
+  Author: Dustin_Chen
+  Email:  Dustin_Chen@compal.com or chuhpsdustin@gmail.com
+-->  
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NR Throughput Calculator</title>
+    <script type="text/javascript">
+        function calculateThroughput() {
+            var J = parseFloat(document.getElementById("numAggregatedCC").value);
+            var Layers = parseInt(document.getElementById("maxLayers").value);
+            var Qm = parseInt(document.getElementById("maxModulationOrder").value);
+            var f = parseFloat(document.getElementById("scalingFactor").value);
+            var Rmax = 948 / 1024;
+            var RB_allocation = parseFloat(document.getElementById("RBAllocation").value);
+            var mu = parseInt(document.getElementById("muValue").value);
+            var OH = parseFloat(document.getElementById("OHValue").value);
+            var TDD_pattern = parseFloat(document.getElementById("TDDPattern").value);
+            var BLER = parseFloat(document.getElementById("blerInput").value); // User input for BLER
+
+            var throughput = Math.pow(10, -6) * J * Layers * Qm * f * Rmax * (RB_allocation * 12 / (Math.pow(10, -3) / (14 * Math.pow(2, mu)))) * (1 - OH) * TDD_pattern * (1 - BLER);
+
+            document.getElementById("result").innerHTML = "NR Throughput: " + throughput.toFixed(8) + " Mbps";
+        }
+    </script>
+</head>
+<body>
+    <h1>NR Throughput Calculator</h1>
+	<p style="margin: 0;">Author: Dustin_Chen, email: <a href="mailto:Dustin_Chen@compal.com" style="line-height: 1;">Dustin_Chen@compal.com</a> or <a href="mailto:chuhpsdustin@gmail.com" style="line-height: 1;">chuhpsdustin@gmail.com</a></p>
+	<img src="https://raw.githubusercontent.com/dustinchen26/NR_Tput/master/formula.jpg" alt="GitHub Image" width="600">
+	<br>
+    <label for="numAggregatedCC">J (Number of aggregated component carriers in a band):</label>
+    <select id="numAggregatedCC">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+    </select><br><br>
+	
+    <label for="maxLayers">Layers (Maximum number of layers):</label>
+    <select id="maxLayers">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="4">4</option>
+        <option value="8">8</option>
+    </select><br><br>
+
+    <label for="maxModulationOrder">Qm (Maximum modulation order):</label>
+    <select id="maxModulationOrder">
+        <option value="2">2</option>
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+    </select><br><br>
+
+    <label for="scalingFactor">f (Scaling factor):</label>
+    <select id="scalingFactor">
+        <option value="1">1</option>
+        <option value="0.8">0.8</option>
+        <option value="0.75">0.75</option>
+        <option value="0.4">0.4</option>
+    </select><br><br>
+
+    <label for="RBAllocation">RB Allocation:</label>
+    <select id="RBAllocation">
+        <option value="273">273 (100MHz)</option>
+        <option value="245">245 (90MHz)</option>
+        <option value="217">217 (80MHz)</option>
+        <option value="162">162 (60MHz)</option>
+        <option value="133">133 (50MHz)</option>
+        <option value="106">106 (40MHz)</option>
+        <option value="78">78 (30MHz)</option>
+        <option value="65">65 (25MHz)</option>
+        <option value="51">51 (20MHz)</option>
+        <option value="38">38 (15MHz)</option>
+        <option value="24">24 (10MHz)</option>
+        <option value="11">11 (5MHz)</option>
+    </select><br><br>
+
+    <label for="muValue">μ Value:</label>
+    <select id="muValue">
+        <option value="0">0 (15 kHz)</option>
+        <option value="1">1 (30 kHz)</option>
+        <option value="2">2 (60 kHz)</option>
+    </select><br><br>
+
+    <label for="OHValue">OH Value:</label>
+    <select id="OHValue">
+        <option value="0.14">0.14 (FR1 DL)</option>
+        <option value="0.18">0.18 (FR2 DL)</option>
+        <option value="0.08">0.08 (FR1 UL)</option>
+        <option value="0.10">0.10 (FR2 UL)</option>
+    </select><br><br>
+
+    <label for="TDDPattern">TDD Pattern:</label>
+    <select id="TDDPattern">
+<!--	JavaScript 本身并不直接支持进行分数运算
+        <option value="36/140">36/140 (UL: DDDSU DDSUU, S=10:2:2)</option>
+        <option value="83/140">83/140 (DL: DDDSU DDSUU, S=10:2:2)</option>
+        <option value="26/140">26/140 (UL: 7D1S2U, S=6:4:4)</option>
+        <option value="96/140">96/140 (DL: 7D1S2U, S=6:4:4)</option>
+        <option value="26/140">26/140 (UL: DDDSU UDDDD, S=6:4:4)</option>
+        <option value="96/140">96/140 (DL: DDDSU UDDDD, S=6:4:4)</option>
+        <option value="48/140">48/140 (UL: DDDSU UDSUU, S=10:4:0)</option>
+        <option value="70/140">70/140 (DL: DDDSU UDSUU, S=10:4:0)</option>
+        <option value="72/140">72/140 (UL: DSUUU DSUUU, S=10:2:2)</option>
+        <option value="44/140">44/140 (DL: DSUUU DSUUU, S=10:2:2)</option>
+        <option value="24/140">24/140 (UL: DDDSU DDDSU, S=10:2:2)</option>
+        <option value="96/140">96/140 (DL: DDDSU DDDSU, S=10:2:2)</option>
+-->
+        <option value="0.257142857">36/140 (UL: DDDSU DDSUU, S=10:2:2)</option>
+        <option value="0.592857143">83/140 (DL: DDDSU DDSUU, S=10:2:2)</option>
+        <option value="0.185714286">26/140 (UL: 7D1S2U, S=6:4:4)</option>
+        <option value="0.685714286">96/140 (DL: 7D1S2U, S=6:4:4)</option>
+        <option value="0.185714286">26/140 (UL: DDDSU UDDDD, S=6:4:4)</option>
+        <option value="0.685714286">96/140 (DL: DDDSU UDDDD, S=6:4:4)</option>
+        <option value="0.342857143">48/140 (UL: DDDSU UDSUU, S=10:4:0)</option>
+        <option value="0.5">70/140 (DL: DDDSU UDSUU, S=10:4:0)</option>
+        <option value="0.514285714">72/140 (UL: DSUUU DSUUU, S=10:2:2)</option>
+        <option value="0.314285714">44/140 (DL: DSUUU DSUUU, S=10:2:2)</option>
+        <option value="0.171428571">24/140 (UL: DDDSU DDDSU, S=10:2:2)</option>
+        <option value="0.685714286">96/140 (DL: DDDSU DDDSU, S=10:2:2)</option>	
+    </select><br><br>
+    
+    <label for="blerInput">BLER (range 0~1, ex: 0.18):</label>
+    <input type="number" id="blerInput" step="0.01" min="0" max="1"><br><br>
+
+    <button onclick="calculateThroughput()">Calculate</button>
+    <p id="result"></p>
+</body>
+</html>

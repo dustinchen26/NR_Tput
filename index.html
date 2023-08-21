@@ -34,7 +34,8 @@
     <table>
         <tr>
             <td>
-    <label for="numAggregatedCC">J (Number of aggregated component carriers in a band):</label>
+		<p>Ref: Spec ETSI TS 138 306</p>
+    <label for="numAggregatedCC">► J (Number of aggregated component carriers in a band):</label>
     <select id="numAggregatedCC">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -54,7 +55,7 @@
         <option value="16">16</option>
     </select><br><br>
 	
-    <label for="maxLayers">Layers (Maximum number of layers):</label>
+    <label for="maxLayers">► Layers (Maximum number of layers):</label>
     <select id="maxLayers">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -62,7 +63,7 @@
         <option value="8">8</option>
     </select><br><br>
 
-    <label for="maxModulationOrder">Qm (Maximum modulation order):</label>
+    <label for="maxModulationOrder">► Qm (Maximum modulation order):</label>
     <select id="maxModulationOrder">
         <option value="2">2</option>
         <option value="4">4</option>
@@ -70,7 +71,7 @@
         <option value="8">8</option>
     </select><br><br>
 
-    <label for="scalingFactor">f (Scaling factor):</label>
+    <label for="scalingFactor">► f (Scaling factor):</label>
     <select id="scalingFactor">
         <option value="1">1</option>
         <option value="0.8">0.8</option>
@@ -78,7 +79,7 @@
         <option value="0.4">0.4</option>
     </select><br><br>
 
-    <label for="RBAllocation">RB Allocation:</label>
+    <label for="RBAllocation">► RB Allocation:</label>
     <select id="RBAllocation">
         <option value="273">273 (100MHz)</option>
         <option value="245">245 (90MHz)</option>
@@ -94,14 +95,14 @@
         <option value="11">11 (5MHz)</option>
     </select><br><br>
 
-    <label for="muValue">μ Value:</label>
+    <label for="muValue">► μ Value:</label>
     <select id="muValue">
         <option value="0">0 (15 kHz)</option>
         <option value="1">1 (30 kHz)</option>
         <option value="2">2 (60 kHz)</option>
     </select><br><br>
 
-    <label for="OHValue">OH Value:</label>
+    <label for="OHValue">► OH Value:</label>
     <select id="OHValue">
         <option value="0.14">0.14 (FR1 DL)</option>
         <option value="0.18">0.18 (FR2 DL)</option>
@@ -109,7 +110,7 @@
         <option value="0.10">0.10 (FR2 UL)</option>
     </select><br><br>
 
-    <label for="TDDPattern">TDD Pattern:</label>
+    <label for="TDDPattern">► TDD Pattern:</label>
     <select id="TDDPattern">
 <!--	JavaScript 本身并不直接支持进行分数运算
         <option value="36/140">36/140 (UL: DDDSU DDSUU, S=10:2:2)</option>
@@ -139,7 +140,7 @@
         <option value="0.685714286">96/140 (DL: DDDSU DDDSU, S=10:2:2)</option>	
     </select><br><br>
     
-    <label for="blerInput">BLER (range 0~1, ex: 0.18):</label>
+    <label for="blerInput">► BLER (range 0~1, ex: 0.18):</label>
     <input type="number" id="blerInput" step="0.01" min="0" max="1"><br><br>
 
     <button onclick="calculateThroughput()">Calculate</button>

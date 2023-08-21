@@ -30,8 +30,10 @@
 <body>
     <h1>NR Throughput Calculator</h1>
 	<p style="margin: 0;">Author: Dustin_Chen, email: <a href="mailto:Dustin_Chen@compal.com" style="line-height: 1;">Dustin_Chen@compal.com</a> or <a href="mailto:chuhpsdustin@gmail.com" style="line-height: 1;">chuhpsdustin@gmail.com</a></p>
-	<img src="https://raw.githubusercontent.com/dustinchen26/NR_Tput/master/formula.jpg" alt="GitHub Image" width="600">
-	<br>
+<br>
+    <table>
+        <tr>
+            <td>
     <label for="numAggregatedCC">J (Number of aggregated component carriers in a band):</label>
     <select id="numAggregatedCC">
         <option value="1">1</option>
@@ -142,5 +144,12 @@
 
     <button onclick="calculateThroughput()">Calculate</button>
     <p id="result"></p>
+	
+            </td>	
+            <td>
+                <img src="https://raw.githubusercontent.com/dustinchen26/NR_Tput/master/formula.jpg" alt="GitHub Image" width="700">
+			</td>
+        </tr>
+    </table>	
 </body>
 </html>

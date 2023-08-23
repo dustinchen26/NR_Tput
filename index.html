@@ -16,35 +16,35 @@
         var mcsConfigurations = {
         
             "Table5.1.3.1-1": [
-                [2, 120/1024],
-                [2, 157/1024],
-                [2, 193/1024],
-                [2, 251/1024],
-                [2, 308/1024],
-                [2, 379/1024],
-                [2, 449/1024],
-                [2, 526/1024],
-                [2, 602/1024],
-                [2, 679/1024],
-                [4, 340/1024],
-                [4, 378/1024],
-                [4, 434/1024],
-                [4, 490/1024],
-                [4, 553/1024],
-                [4, 616/1024],
-                [4, 658/1024],
-                [6, 438/1024],
-                [6, 466/1024],
-                [6, 517/1024],
-                [6, 567/1024],
-                [6, 616/1024],
-                [6, 666/1024],
-                [6, 719/1024],
-                [6, 772/1024],
-                [6, 822/1024],
-                [6, 873/1024],
-                [6, 910/1024],
-                [6, 948/1024]
+                [2, 120/1024],// MCS Index 0
+                [2, 157/1024],// MCS Index 1
+                [2, 193/1024],// MCS Index 2
+                [2, 251/1024],// MCS Index 3
+                [2, 308/1024],// MCS Index 4
+                [2, 379/1024],// MCS Index 5
+                [2, 449/1024],// MCS Index 6
+                [2, 526/1024],// MCS Index 7
+                [2, 602/1024],// MCS Index 8
+                [2, 679/1024],// MCS Index 9
+                [4, 340/1024],// MCS Index 10
+                [4, 378/1024],// MCS Index 11
+                [4, 434/1024],// MCS Index 12
+                [4, 490/1024],// MCS Index 13
+                [4, 553/1024],// MCS Index 14
+                [4, 616/1024],// MCS Index 15
+                [4, 658/1024],// MCS Index 16
+                [6, 438/1024],// MCS Index 17
+                [6, 466/1024],// MCS Index 18
+                [6, 517/1024],// MCS Index 19
+                [6, 567/1024],// MCS Index 20
+                [6, 616/1024],// MCS Index 21
+                [6, 666/1024],// MCS Index 22
+                [6, 719/1024],// MCS Index 23
+                [6, 772/1024],// MCS Index 24
+                [6, 822/1024],// MCS Index 25
+                [6, 873/1024],// MCS Index 26
+                [6, 910/1024],// MCS Index 27
+                [6, 948/1024] // MCS Index 28
             ],
             
     "Table5.1.3.1-2": [
@@ -228,6 +228,7 @@ function populateMCSIndexOptions() {
         <tr>
             <td>
         <p>Ref: Spec 38.306, 38.214. Rmax = Target code Rate R/1024</p>
+		<p>(Note) pusch:startSymbolAndLength 55(Start=0,Length=12) / pdsch:(symbol 1~13)</p>
         <img src="https://raw.githubusercontent.com/dustinchen26/NR_Tput/master/formula.png" alt="GitHub Image" width="600">
         <br>
     <label for="numAggregatedCC">► J (Number of aggregated component carriers in a band):</label>
@@ -328,18 +329,19 @@ function populateMCSIndexOptions() {
         <option value="24/140">24/140 (UL: DDDSU DDDSU, S=10:2:2)</option>
         <option value="96/140">96/140 (DL: DDDSU DDDSU, S=10:2:2)</option>
 -->
-        <option value="0.257142857">36/140 (UL: DDDSU DDSUU, S=10:2:2)</option>
-        <option value="0.592857143">83/140 (DL: DDDSU DDSUU, S=10:2:2)</option>
-        <option value="0.185714286">26/140 (UL: 7D1S2U, S=6:4:4)</option>
-        <option value="0.685714286">96/140 (DL: 7D1S2U, S=6:4:4)</option>
-        <option value="0.185714286">26/140 (UL: DDDSU UDDDD, S=6:4:4)</option>
-        <option value="0.685714286">96/140 (DL: DDDSU UDDDD, S=6:4:4)</option>
-        <option value="0.342857143">48/140 (UL: DDDSU UDSUU, S=10:4:0)</option>
-        <option value="0.5">70/140 (DL: DDDSU UDSUU, S=10:4:0)</option>
-        <option value="0.514285714">72/140 (UL: DSUUU DSUUU, S=10:2:2)</option>
-        <option value="0.314285714">44/140 (DL: DSUUU DSUUU, S=10:2:2)</option>
-        <option value="0.171428571">24/140 (UL: DDDSU DDDSU, S=10:2:2)</option>
-        <option value="0.685714286">96/140 (DL: DDDSU DDDSU, S=10:2:2)</option>    
+        <option value="0.257142857">36/140 (UL: DDDSU DDSUU, S=10:2:2)</option> <!-- (12*3)/140 -->
+        <option value="0.592857143">83/140 (DL: DDDSU DDSUU, S=10:2:2)</option> <!-- (13*5 + 9*2)/140 -->
+        <option value="0.171428571">24/140 (UL: DDDSU DDDSU, S=10:2:2)</option> <!-- (12*2)/140 -->
+        <option value="0.685714286">96/140 (DL: DDDSU DDDSU, S=10:2:2)</option> <!-- (13*6 + 9*2)/140 -->
+        <option value="0.185714286">26/140 (UL: 7D1S2U, S=6:4:4)</option> <!-- (12*2 + 2)/140 -->
+        <option value="0.685714286">96/140 (DL: 7D1S2U, S=6:4:4)</option> <!-- (13*7 + 5)/140 -->
+        <option value="0.185714286">26/140 (UL: DDDSU UDDDD, S=6:4:4)</option> <!-- (12*2 + 2)/140 -->
+        <option value="0.685714286">96/140 (DL: DDDSU UDDDD, S=6:4:4)</option> <!-- (13*7 + 5)/140 -->
+        <option value="0.342857143">48/140 (UL: DDDSU UDSUU, S=10:4:0)</option> <!-- (12*4)/140 -->
+        <option value="0.5">70/140 (DL: DDDSU UDSUU, S=10:4:0)</option> <!-- (13*4 + 9*2)/140 -->
+        <option value="0.514285714">72/140 (UL: DSUUU DSUUU, S=10:2:2)</option> <!-- (12*6)/140 -->
+        <option value="0.314285714">44/140 (DL: DSUUU DSUUU, S=10:2:2)</option> <!-- (13*2 + 9*2)/140 -->
+
     </select><br><br>
     
     <label for="blerInput">► BLER (range 0~1, ex: 0.18):</label>

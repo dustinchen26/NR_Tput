@@ -217,6 +217,22 @@ function populateMCSIndexOptions() {
         // Initialize the MCS Index dropdown when the page loads
         window.onload = function() {
             populateMCSIndexOptions();
+            // Set the default values for the form elements
+            document.getElementById("numAggregatedCC").value = "1";
+            document.getElementById("maxLayers").value = "4";
+            document.getElementById("scalingFactor").value = "1";
+            document.getElementById("RBAllocation").value = "273";
+            document.getElementById("muValue").value = "1";
+            document.getElementById("OHValue").value = "0.14";
+            document.getElementById("TDDPattern").value = "0.592857143";
+            document.getElementById("blerInput").value = "0";
+
+            // 預先選擇範例數值
+            document.getElementById("selectedTable").value = "Table5.1.3.1-2";
+            document.getElementById("selectedMCSIndex").value = "27";
+
+            // 執行一次計算
+            calculateThroughput();
         };    
     </script>
 </head>

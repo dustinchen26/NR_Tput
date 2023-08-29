@@ -196,6 +196,57 @@
             document.getElementById("result").innerHTML = "NR Throughput: " + throughput.toFixed(8) + " Mbps";
         }
 
+        function calculateSingleMCSThroughput(Qm, Rmax) {
+            // Add your logic here to calculate the throughput for a single MCS index
+            // For example:
+            var J = parseFloat(document.getElementById("numAggregatedCC").value);
+            var Layers = parseInt(document.getElementById("maxLayers").value);
+            var f = parseFloat(document.getElementById("scalingFactor").value);
+            var RB_allocation = parseFloat(document.getElementById("RBAllocation").value);
+            var mu = parseInt(document.getElementById("muValue").value);
+            var OH = parseFloat(document.getElementById("OHValue").value);
+            var TDD_pattern = parseFloat(document.getElementById("TDDPattern").value);
+            var BLER = parseFloat(document.getElementById("blerInput").value);
+
+            var throughput = Math.pow(10, -6) * J * Layers * Qm * f * Rmax * (RB_allocation * 12 / (Math.pow(10, -3) / (
+                14 * Math.pow(2, mu)))) * (1 - OH) * TDD_pattern * (1 - BLER);
+
+            return throughput;
+        }
+
+        function calculateAllMCS() {
+            var selectedTable = document.getElementById("selectedTable").value;
+            var mcsIndices = mcsConfigurations[selectedTable].length;
+            var results = [];
+
+            for (var i = 0; i < mcsIndices; i++) {
+                var Qm = mcsConfigurations[selectedTable][i][0];
+                var Rmax = mcsConfigurations[selectedTable][i][1];
+                var throughput = calculateSingleMCSThroughput(Qm, Rmax);
+                results.push({
+                    mcsIndex: i,
+                    throughput: throughput
+                });
+            }
+
+            displayResultsTable(results);
+        }
+
+        function displayResultsTable(results) {
+            var table =
+                "<table style='border-collapse: collapse; border: 1px solid black;'><tr><th style='border: 1px solid black;'>MCS Index</th>";
+            var values = "<tr><td style='border: 1px solid black;'>Throughput (Mbps)</td>";
+
+            for (var i = 0; i < results.length; i++) {
+                table += "<td style='border: 1px solid black; text-align: center;'>" + results[i].mcsIndex + "</td>";
+                values += "<td style='border: 1px solid black; text-align: center;'>" + results[i].throughput.toFixed(
+                    2) + "</td>";
+            }
+
+            table += "</tr>" + values + "</tr></table>";
+            document.getElementById("allResults").innerHTML = table;
+        }
+
         function populateMCSIndexOptions() {
             var selectedTable = document.getElementById("selectedTable").value;
             var selectedMCSIndexElement = document.getElementById("selectedMCSIndex");
@@ -370,6 +421,7 @@
                 <input type="number" id="blerInput" step="0.01" min="0" max="1"><br><br>
 
                 <button onclick="calculateThroughput()">Calculate</button>
+                <button onclick="calculateAllMCS()">Calculate All MCS</button>
                 <p id="result"></p>
 
             </td>
@@ -379,6 +431,8 @@
             </td>
         </tr>
     </table>
+    <div id="allResults" style="margin-top: 20px;"></div>
+
 </body>
 
 </html>

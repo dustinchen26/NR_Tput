@@ -180,12 +180,26 @@
             mu = parseInt(document.getElementById("muValue").value);
             OH = parseFloat(document.getElementById("OHValue").value);
             TDD_pattern = parseFloat(document.getElementById("TDDPattern").value);
+
+            // Clear previous error message
+            document.getElementById("result").innerHTML = "";
+
+            // Extract BLER input value
             BLER = parseFloat(document.getElementById("blerInput").value); // User input for BLER
+
+
+            // Add input validation for BLER
+            if (isNaN(BLER) || BLER < 0 || BLER > 1) {
+                document.getElementById("allResultsError").innerHTML =
+                    "Invalid BLER input. Please enter a value between 0 and 1.";
+                return;
+            }
+
+            // Clear previous error message
+            document.getElementById("allResultsError").innerHTML = "";
 
             var selectedTable = document.getElementById("selectedTable").value;
             var selectedMCSIndex = parseInt(document.getElementById("selectedMCSIndex").value);
-
-
 
             Qm = mcsConfigurations[selectedTable][selectedMCSIndex][0];
             Rmax = mcsConfigurations[selectedTable][selectedMCSIndex][1];
@@ -218,6 +232,17 @@
             var selectedTable = document.getElementById("selectedTable").value;
             var mcsIndices = mcsConfigurations[selectedTable].length;
             var results = [];
+            var BLER = parseFloat(document.getElementById("blerInput").value);
+
+            // Add input validation for BLER
+            if (isNaN(BLER) || BLER < 0 || BLER > 1) {
+                document.getElementById("allResultsError").innerHTML =
+                    "Invalid BLER input. Please enter a value between 0 and 1.";
+                return;
+            }
+
+            // Clear previous error message
+            document.getElementById("allResultsError").innerHTML = "";
 
             for (var i = 0; i < mcsIndices; i++) {
                 var Qm = mcsConfigurations[selectedTable][i][0];
@@ -239,7 +264,8 @@
 
             for (var i = 0; i < results.length; i++) {
                 table += "<td style='border: 1px solid black; text-align: center;'>" + results[i].mcsIndex + "</td>";
-                values += "<td style='border: 1px solid black; text-align: center;'> &nbsp; " + results[i].throughput.toFixed(0) + " &nbsp; </td>";
+                values += "<td style='border: 1px solid black; text-align: center;'> &nbsp; " + results[i].throughput
+                    .toFixed(0) + " &nbsp; </td>";
             }
 
             table += "</tr>" + values + "</tr></table>";
@@ -431,7 +457,7 @@
         </tr>
     </table>
     <div id="allResults" style="margin-top: 20px;"></div>
-
+    <div id="allResultsError" style="color: red;"></div> <!-- Add this error message display area -->
 </body>
 
 </html>

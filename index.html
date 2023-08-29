@@ -193,7 +193,7 @@
             var throughput = Math.pow(10, -6) * J * Layers * Qm * f * Rmax * (RB_allocation * 12 / (Math.pow(10, -3) / (
                 14 * Math.pow(2, mu)))) * (1 - OH) * TDD_pattern * (1 - BLER);
 
-            document.getElementById("result").innerHTML = "NR Throughput: " + throughput.toFixed(8) + " Mbps";
+            document.getElementById("result").innerHTML = "NR Throughput: " + throughput.toFixed(3) + " Mbps";
         }
 
         function calculateSingleMCSThroughput(Qm, Rmax) {
@@ -239,8 +239,7 @@
 
             for (var i = 0; i < results.length; i++) {
                 table += "<td style='border: 1px solid black; text-align: center;'>" + results[i].mcsIndex + "</td>";
-                values += "<td style='border: 1px solid black; text-align: center;'>" + results[i].throughput.toFixed(
-                    2) + "</td>";
+                values += "<td style='border: 1px solid black; text-align: center;'> &nbsp; " + results[i].throughput.toFixed(0) + " &nbsp; </td>";
             }
 
             table += "</tr>" + values + "</tr></table>";

@@ -415,30 +415,47 @@
 
                 <label for="TDDPattern">► TDD Pattern:</label>
                 <select id="TDDPattern">
-                    <!--	JavaScript 本身并不直接支持进行分数运算
-        <option value="36/140">36/140 (UL: DDDSU DDSUU, S=10:2:2)</option>
-        <option value="83/140">83/140 (DL: DDDSU DDSUU, S=10:2:2)</option>
+   <!--	JavaScript 本身并不直接支持进行分数运算
+        <option value="36/140">36/140 (UL: DDDSU DDSUU, S=10:2:2)</option>  UL: 36/140 (12*3) = 240 Mbps (210Mbps / 0.875)
+        <option value="83/140">83/140 (DL: DDDSU DDSUU, S=10:2:2)</option>  DL: 83/140 (13*5 + 9*2) = 1385 Mbps (1038Mbps / 0.75)
+
+        <option value="36/140">36/140 (UL: DDSUU, S=10:2:2)</option>  UL: 48/140 (12*4)= 0.34285714285
+        <option value="83/140">83/140 (DL: DDSUU, S=10:2:2)</option>  DL: 70/140 (13*4 + 9*2) = 0.5
+
+        <option value="24/140">24/140 (UL: DDDSU, S=10:2:2)</option>
+        <option value="96/140">96/140 (DL: DDDSU, S=10:2:2)</option>
+		
         <option value="26/140">26/140 (UL: 7D1S2U, S=6:4:4)</option>
         <option value="96/140">96/140 (DL: 7D1S2U, S=6:4:4)</option>
+		
         <option value="26/140">26/140 (UL: DDDSU UDDDD, S=6:4:4)</option>
         <option value="96/140">96/140 (DL: DDDSU UDDDD, S=6:4:4)</option>
+		
         <option value="48/140">48/140 (UL: DDDSU UDSUU, S=10:4:0)</option>
         <option value="70/140">70/140 (DL: DDDSU UDSUU, S=10:4:0)</option>
+		
         <option value="72/140">72/140 (UL: DSUUU DSUUU, S=10:2:2)</option>
         <option value="44/140">44/140 (DL: DSUUU DSUUU, S=10:2:2)</option>
-        <option value="24/140">24/140 (UL: DDDSU DDDSU, S=10:2:2)</option>
-        <option value="96/140">96/140 (DL: DDDSU DDDSU, S=10:2:2)</option>
+
 -->
                     <option value="0.257142857">36/140 (UL: DDDSU DDSUU, S=10:2:2)</option> <!-- (12*3)/140 -->
                     <option value="0.592857143">83/140 (DL: DDDSU DDSUU, S=10:2:2)</option> <!-- (13*5 + 9*2)/140 -->
-                    <option value="0.171428571">24/140 (UL: DDDSU DDDSU, S=10:2:2)</option> <!-- (12*2)/140 -->
-                    <option value="0.685714286">96/140 (DL: DDDSU DDDSU, S=10:2:2)</option> <!-- (13*6 + 9*2)/140 -->
+					
+                    <option value="0.342857143">48/140 (UL: DDSUU, S=10:2:2)</option> <!-- (12*4)/140 -->
+                    <option value="0.5">70/140 (DL: DDSUU, S=10:2:2)</option> <!-- (13*4 + 9*2)/140 -->
+					
+                    <option value="0.171428571">24/140 (UL: DDDSU, S=10:2:2)</option> <!-- (12*2)/140 -->
+                    <option value="0.685714286">96/140 (DL: DDDSU, S=10:2:2)</option> <!-- (13*6 + 9*2)/140 -->
+
                     <option value="0.185714286">26/140 (UL: 7D1S2U, S=6:4:4)</option> <!-- (12*2 + 2)/140 -->
                     <option value="0.685714286">96/140 (DL: 7D1S2U, S=6:4:4)</option> <!-- (13*7 + 5)/140 -->
+					
                     <option value="0.185714286">26/140 (UL: DDDSU UDDDD, S=6:4:4)</option> <!-- (12*2 + 2)/140 -->
                     <option value="0.685714286">96/140 (DL: DDDSU UDDDD, S=6:4:4)</option> <!-- (13*7 + 5)/140 -->
+					
                     <option value="0.342857143">48/140 (UL: DDDSU UDSUU, S=10:4:0)</option> <!-- (12*4)/140 -->
                     <option value="0.5">70/140 (DL: DDDSU UDSUU, S=10:4:0)</option> <!-- (13*4 + 9*2)/140 -->
+					
                     <option value="0.514285714">72/140 (UL: DSUUU DSUUU, S=10:2:2)</option> <!-- (12*6)/140 -->
                     <option value="0.314285714">44/140 (DL: DSUUU DSUUU, S=10:2:2)</option> <!-- (13*2 + 9*2)/140 -->
 
